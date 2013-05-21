@@ -15,6 +15,21 @@ Installation
 
 Put `gw2api.py` inside your project and use it with `import gw2api`.
 
+Usage
+-----
+
+    import gw2api
+
+	# Server names in French
+    gw2api.get_world_names(lang="fr")
+
+    # Specific event on Gate of Madness
+    gw2api.get_events(event_id="EB8D67FD-8371-4E21-A934-805C025D0AF4", world_id=1007)
+
+    # All events in Queensdale on Gate of Madness
+    gw2api.get_events(map_id=15, world_id=1007)
+
+
 License
 -------
 
