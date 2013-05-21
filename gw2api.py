@@ -25,17 +25,17 @@ def get_items():
     """ Get a list of all item ids. """
     return _request("items.json")
 
-def get_item_details(id):
+def get_item_details(id, lang="en"):
     """ Get details of specific item. """
-    return _request("item_details.json", item_id=id)
+    return _request("item_details.json", item_id=id, lang=lang)
 
 def get_recipes():
     """ Get a list of all recipes. """
     return _request("recipes.json")
 
-def get_recipe_details(id):
+def get_recipe_details(id, lang="en"):
     """ Get details of specific item. """
-    return _request("recipe_details.json", recipe_id=id)
+    return _request("recipe_details.json", recipe_id=id, lang=lang)
 
 def get_wvw_matches():
     """ Get the current running WvW matches. """
@@ -45,21 +45,26 @@ def get_wvw_match_details(id):
     """ Get the current match details. """
     return _request("wvw/match_details.json", match_id=id)
 
-def get_wvw_objective_names():
+def get_wvw_objective_names(lang="en"):
     """ Get the names of all objectives in WvW maps. """
-    return _request("wvw/objective_names.json")
+    return _request("wvw/objective_names.json", lang=lang)
 
-def get_event_names():
+def get_event_names(lang="en"):
     """ Get names of all existing events. """
-    return _request("event_names.json")
+    return _request("event_names.json", lang=lang)
 
-def get_map_names():
+def get_map_names(lang="en"):
     """ Get names of all maps. """
-    return _request("map_names.json")
+    return _request("map_names.json", lang=lang)
 
-def get_world_names():
+def get_world_names(lang="en"):
     """ Get names of all world servers. """
-    return _request("world_names.json")
+    return _request("world_names.json", lang=lang)
+
+def get_events(**args):
+    """ Get list events based on filtering by world, map and event. """
+    return _request("events.json", **args)
+
 
 def _request(json_location, **args):
     """ Makes a request on the Guild Wars 2 API."""
