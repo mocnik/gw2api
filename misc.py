@@ -121,3 +121,5 @@ lang = {u'1': (u'Overlook', u'Aussichtspunkt', u'Belv\xe9d\xe8re', u''),
  u'7': (u'Danelon Passage', u'Danelon-Passage', u'Passage Danelon', u''),
  u'8': (u'Umberglade Woods', u'Umberlichtung-Forst', u'Bois dOmbreclair', u''),
  u'9': (u'Stonemist Castle', u'Schloss Steinnebel', u'Ch\xe2teau Brumepierre', u'')}
+
+world_2_id = {u'Red': 0, u'Blue': 1, u'Green': 2}

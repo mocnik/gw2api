@@ -1,4 +1,5 @@
 import misc
+from collections import defaultdict, Counter
 
 # Import proper urllib and JSON library
 import urllib2
@@ -65,3 +66,21 @@ def get_enhanced_wvw_objective_dict(lang='en'):
     """ Get the real names of all WvW objectives, with their scores. In form of a dictionary sorted by ids. """
     objective_names = get_enhanced_wvw_objective_names(lang=lang)
     return { objective[u'id']: objective for objective in objective_names}
+
+def calculate_wvw_map_income(match_details, objective_dict):
+    """ Calculate the map points per tick income for each world. """
+    scores = {}
+    for wvw_map in match_details[u'maps']:
+        map_scores = defaultdict(int)
+        for objective in wvw_map[u'objectives']:
+            map_scores[objective[u'owner']] += int(objective_dict[unicode(objective[u'id'])][u'points'])
+        scores[wvw_map[u'type']] = dict(map_scores)
+    return dict(scores)
+
+def calculate_wvw_total_income(match_details, objective_dict):
+    """ Calculate the total points per tick income for each world. """
+    map_scores = calculate_wvw_map_income(match_details, objective_dict)
+    scores = Counter()
+    for map_score in map_scores.values():
+        scores.update(map_score)
+    return dict(scores)
