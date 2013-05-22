@@ -1,19 +1,3 @@
-# GW2api - Python wrapper for Guild Wars 2 official API.
-# Copyright (C) 2013  Rok Mocnik <rok dot mocnik at ntnu dot no>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 # Import proper urllib and JSON library
 import urllib2
 try:
@@ -64,7 +48,6 @@ def get_world_names(lang="en"):
 def get_events(**args):
     """ Get list events based on filtering by world, map and event. """
     return _request("events.json", **args)
-
 
 def _request(json_location, **args):
     """ Makes a request on the Guild Wars 2 API."""
