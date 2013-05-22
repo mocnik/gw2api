@@ -60,3 +60,8 @@ def get_enhanced_wvw_objective_names(lang='en'):
     """ Get the real names of all WvW objectives, with their scores. """
     lang_table = {u'en': 0, u'de': 1, u'fr': 2, u'es': 3}
     return [dict(objective.items() +[(u'objective_name', misc.lang[objective[u'id']][lang_table[lang]])] ) for objective in misc.world]
+
+def get_enhanced_wvw_objective_dict(lang='en'):
+    """ Get the real names of all WvW objectives, with their scores. In form of a dictionary sorted by ids. """
+    objective_names = get_enhanced_wvw_objective_names(lang=lang)
+    return { objective[u'id']: objective for objective in objective_names}
