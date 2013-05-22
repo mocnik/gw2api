@@ -1,3 +1,5 @@
+import misc
+
 # Import proper urllib and JSON library
 import urllib2
 try:
@@ -53,3 +55,8 @@ def _request(json_location, **args):
     """ Makes a request on the Guild Wars 2 API."""
     url = 'https://api.guildwars2.com/v1/' + json_location + '?' + '&'.join(str(argument) + '=' + str(value) for argument, value in args.items())
     return json.loads(urllib2.urlopen(url).read())
+
+def get_enhanced_wvw_objective_names(lang="en"):
+    """ Get the real names of all WvW objectives, with their scores. """
+    lang_table = {u'en': 0, u'de': 1, u'fr': 2, u'es': 3}
+    return [dict(objective.items() +[(u'objective_name', misc.lang[objective[u'id']][lang_table[lang]])] ) for objective in misc.world]
